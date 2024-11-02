@@ -12,7 +12,7 @@ use App\Traits\HttpResponses;
 
 class TasksController extends Controller
 {
-    use HttpResponses;
+
     public function index()
     {
         $task = Task::get();
@@ -77,7 +77,9 @@ class TasksController extends Controller
     private function isNotAuthorized($task)
     {
         if (Auth::user()->id !== $task->user_id) {
-            return $this->error('', 'you are not Authorized to do this request', 403);
+            return response()->json([
+                'message' => 'you are not Authorized to do this request'
+            ], 403);
         }
     }
 }
