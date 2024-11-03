@@ -8,4 +8,9 @@ abstract class Controller
     {
         echo "add new user";
     }
+
+    public function register()
+    {
+        echo "register new user";
+    }
 }
